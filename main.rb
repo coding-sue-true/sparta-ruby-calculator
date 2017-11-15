@@ -13,14 +13,14 @@ def basic_calculator(operator, num1, num2)
 end
 
 def bmi_calculator num1, num2
-  puts (num1 / num2 ** 2)
+  puts num1 / ((num2/100)** 2)
 end
 
 def advanced_calculator (operator, num1, num2)
   if (operator == 'p')
     puts num1 ** num2
   elsif (operator == 'sqrt')
-    puts Math.sqrt(num1)**num2
+    puts Math.sqrt(num1)
   end
 end
 
@@ -39,15 +39,21 @@ if calculator_type == 'b'
 elsif calculator_type == 'a'
   puts "p for power or sqrt for square root"
   advanced_operation = gets.chomp
-  puts "choose one number"
-  first_number = gets.chomp.to_i
-  puts "choose a second number"
-  second_number = gets.chomp.to_i
+
+  if advanced_operation == 'p'
+    puts "choose one number"
+    first_number = gets.chomp.to_i
+    puts "choose a second number"
+    second_number = gets.chomp.to_i
+  elsif advanced_operation == 'sqrt'
+    puts "choose one number"
+    first_number = gets.chomp.to_i
+  end
   advanced_calculator(advanced_operation, first_number, second_number)
 elsif calculator_type == 'bmi'
   puts "please enter you weight in kilograms"
-  metric_weight = gets.chomp.to_i
+  metric_weight = gets.chomp.to_f
   puts "please enter your height in meters"
-  metric_height = gets.chomp.to_i
+  metric_height = gets.chomp.to_f
   bmi_calculator(metric_weight, metric_height)
 end
